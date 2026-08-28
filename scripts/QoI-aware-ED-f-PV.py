@@ -79,7 +79,6 @@ for random_seed in random_seeds_list:
         input_f = Lambda(lambda x: x[:,n_variables-1:n_variables])(input_layer) # mixture fraction
         
         # Assemble the encoding layer:
-        # encoder_PV = Dense(1, activation='linear', use_bias=False, kernel_initializer=tf.keras.initializers.Ones())(input_Yi)
         encoder_PV = Dense(1, activation='linear', use_bias=False, kernel_initializer=kernel_initializer)(input_Yi)
         encoder_f = Dense(1, activation='linear', use_bias=False, trainable=False, kernel_initializer=tf.keras.initializers.Ones())(input_f)
         encoder_output = concatenate([encoder_PV, encoder_f])
